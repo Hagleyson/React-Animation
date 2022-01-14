@@ -3,18 +3,19 @@ import { Transition } from "react-transition-group";
 
 import "./Modal.css";
 
-const modal = (props) => {
-  const cssClasses = [
-    "Modal",
-    props.show === "entering"
-      ? "ModalOpen"
-      : props.show === "exiting"
-      ? "ModalClosed"
-      : null,
-  ];
+const animationTiming = {
+  enter: 400,
+  exit: 1000,
+};
 
+const modal = (props) => {
   return (
-    <Transition mountOnEnter unmountOnExit in={props.show} timeout={1000}>
+    <Transition
+      mountOnEnter
+      unmountOnExit
+      in={props.show}
+      timeout={animationTiming}
+    >
       {(state) => {
         const cssClasses = [
           "Modal",
